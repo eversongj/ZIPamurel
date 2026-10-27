@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product
-      Id="{817E8262-845B-4FFE-98AD-69B6E328104B}"
+      Id="{C8B2F5A9-E4E0-4A18-B4D4-808D8D552F72}"
       UpgradeCode="{26183A38-9BDF-44F7-91A7-96378C2C3501}"
       Name="AMUREL ZIP"
       Language="1046"
-      Version="26.5.0.0"
+      Version="26.5.1.0"
       Manufacturer="AMUREL">
     <Package
         InstallerVersion="200"
@@ -42,7 +42,36 @@
               Advertise="yes"
               IconIndex="0" />
         </File>
+        <File Id="AmurelZipGui" Source="$(var.ProjectRoot)\CPP\7zip\UI\GUI\x64\7zG.exe" />
+        <File Id="AmurelZipCodecs" Source="$(var.ProjectRoot)\CPP\7zip\Bundles\Format7zF\x64\7z.dll" />
         <RemoveFolder Id="RemoveAmurelProgramMenu" Directory="AMURELPROGRAMMENU" On="uninstall" />
+      </Component>
+
+      <Component Id="ShellExtension" Directory="INSTALLFOLDER" Guid="{B3D3499C-04E5-4A99-8D66-BD737E4BBA8C}" Win64="yes">
+        <File Id="AmurelExplorerExtension" Source="$(var.ProjectRoot)\CPP\7zip\UI\Explorer\x64\7-zip.dll" KeyPath="yes" />
+        <RegistryKey Root="HKCR" Key="CLSID\{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}">
+          <RegistryValue Type="string" Value="AMUREL ZIP Shell Extension" />
+          <RegistryKey Key="InprocServer32">
+            <RegistryValue Type="string" Value="[INSTALLFOLDER]7-zip.dll" />
+            <RegistryValue Name="ThreadingModel" Type="string" Value="Apartment" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Approved">
+          <RegistryValue Name="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" Type="string" Value="AMUREL ZIP Shell Extension" />
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="Directory\shellex\ContextMenuHandlers\AMUREL ZIP">
+          <RegistryValue Type="string" Value="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" />
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="Folder\shellex\ContextMenuHandlers\AMUREL ZIP">
+          <RegistryValue Type="string" Value="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" />
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="Directory\shell\AMURELZIP">
+          <RegistryValue Type="string" Value="Compactar com AMUREL ZIP" />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
       </Component>
 
       <Component Id="DocumentationFiles" Directory="DOCFOLDER" Guid="{D40B1D7F-99A5-4A69-AE19-21244203EC44}" Win64="yes">

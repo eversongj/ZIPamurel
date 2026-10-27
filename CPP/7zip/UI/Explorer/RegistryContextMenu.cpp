@@ -17,16 +17,16 @@ using namespace NRegistry;
 // CLISID (and Approved ?) items are separated for 32-bit and 64-bit code.
 // shellex items shared by 32-bit and 64-bit code?
 
-#define k_Clsid_A "{23170F69-40C1-278A-1000-000100020000}"
+#define k_Clsid_A "{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}"
 
 static LPCTSTR const k_Clsid = TEXT(k_Clsid_A);
-static LPCTSTR const k_ShellExtName = TEXT("7-Zip Shell Extension");
+static LPCTSTR const k_ShellExtName = TEXT("AMUREL ZIP Shell Extension");
 
 static LPCTSTR const k_Approved = TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Shell Extensions\\Approved");
 static LPCTSTR const k_Inproc = TEXT("InprocServer32");
 
-static LPCSTR const k_KeyPostfix_ContextMenu = "\\shellex\\ContextMenuHandlers\\7-Zip";
-static LPCSTR const k_KeyPostfix_DragDrop    = "\\shellex\\DragDropHandlers\\7-Zip";
+static LPCSTR const k_KeyPostfix_ContextMenu = "\\shellex\\ContextMenuHandlers\\AMUREL ZIP";
+static LPCSTR const k_KeyPostfix_DragDrop    = "\\shellex\\DragDropHandlers\\AMUREL ZIP";
 
 static LPCSTR const k_KeyName_File      = "*";
 static LPCSTR const k_KeyName_Folder    = "Folder";
@@ -43,7 +43,7 @@ static LPCSTR const k_shellex_Prefixes[] =
 
 static const bool k_shellex_Statuses[2][4] =
 {
-  { true, true, true, false },
+  { false, true, true, false },
   { false, false, true, true }
 };
 
@@ -137,7 +137,7 @@ bool CheckContextMenuHandler(const UString &path, UInt32 wow)
   }
   
   return
-       CheckHandlerCommon(Get_ContextMenuHandler_KeyName(k_KeyName_File), wow);
+       CheckHandlerCommon(Get_ContextMenuHandler_KeyName(k_KeyName_Directory), wow);
   /*
     && CheckHandlerCommon(Get_ContextMenuHandler_KeyName(k_KeyName_Directory), wow)
     // && CheckHandlerCommon(Get_ContextMenuHandler_KeyName(k_KeyName_Folder))

@@ -2,3 +2,6 @@
 *.obj
 *.pch
 *.res
+CPP/7zip/UI/Explorer/x64/
+CPP/7zip/UI/GUI/x64/
+CPP/7zip/Bundles/Format7zF/x64/

@@ -23,9 +23,11 @@ compilação deve incluir os decodificadores RAR; não defina
 
 ## Instalador MSI
 
-Depois de compilar o gerenciador x64, gere o instalador com
+Compile também os alvos x64 da interface gráfica, da extensão do Explorador e
+dos codecs externos. O script requer `7zFM.exe`, `7zG.exe`, `7z.dll` e
+`7-zip.dll` nos respectivos diretórios `x64`. Em seguida, gere o instalador com
 `installer\build-msi.ps1`. É necessário ter o WiX Toolset 3.14 disponível no
 `PATH` ou instalado no caminho padrão. O MSI resultante fica em
-`dist\AMUREL-ZIP-26.05-x64.msi`. Ele instala o gerenciador, cria um atalho no
-menu Iniciar e inclui o guia e os avisos de licença; não instala a extensão do
-Explorador nem altera associações de arquivos.
+`dist\AMUREL-ZIP-26.05.1-x64.msi`. Ele instala a integração de menu de
+contexto, incluindo **Compactar com AMUREL ZIP** ao clicar com o botão direito
+em uma pasta. O instalador não altera associações de formatos de arquivo.
