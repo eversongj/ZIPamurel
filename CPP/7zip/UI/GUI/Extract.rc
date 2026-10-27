@@ -1,0 +1,59 @@
+#include "ExtractRes.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+STRINGTABLE DISCARDABLE
+BEGIN
+  IDS_MEM_ERROR  "O sistema não conseguiu alocar a quantidade de memória necessária"
+  IDS_CANNOT_CREATE_FOLDER  "Não foi possível criar a pasta '{0}'"
+  IDS_UPDATE_NOT_SUPPORTED  "Este arquivo não permite operações de atualização."
+  IDS_CANT_OPEN_ARCHIVE  "Não foi possível abrir '{0}' como arquivo compactado"
+  IDS_CANT_OPEN_ENCRYPTED_ARCHIVE  "Não foi possível abrir o arquivo criptografado '{0}'. A senha está correta?"
+  IDS_UNSUPPORTED_ARCHIVE_TYPE  "Tipo de arquivo compactado não suportado"
+
+  IDS_CANT_OPEN_AS_TYPE   "Não foi possível abrir o arquivo como {0}"
+  IDS_IS_OPEN_AS_TYPE     "O arquivo está aberto como {0}"
+  IDS_IS_OPEN_WITH_OFFSET "O arquivo compactado está aberto com deslocamento"
+
+  IDS_PROGRESS_EXTRACTING "Extraindo"
+
+  IDS_PROGRESS_SKIPPING   "Ignorando"
+
+  IDS_EXTRACT_SET_FOLDER  "Escolha o local para os arquivos extraídos."
+
+  IDS_EXTRACT_PATHS_FULL    "Caminhos completos"
+  IDS_EXTRACT_PATHS_NO      "Sem caminhos"
+  IDS_EXTRACT_PATHS_ABS     "Caminhos absolutos"
+  IDS_PATH_MODE_RELAT       "Caminhos relativos"
+
+  IDS_EXTRACT_OVERWRITE_ASK             "Perguntar antes de substituir"
+  IDS_EXTRACT_OVERWRITE_WITHOUT_PROMPT  "Substituir sem perguntar"
+  IDS_EXTRACT_OVERWRITE_SKIP_EXISTING   "Ignorar arquivos existentes"
+  IDS_EXTRACT_OVERWRITE_RENAME          "Renomear automaticamente"
+  IDS_EXTRACT_OVERWRITE_RENAME_EXISTING "Renomear arquivos existentes automaticamente"
+
+  IDS_EXTRACT_MESSAGE_UNSUPPORTED_METHOD   "Método de compactação não suportado em '{0}'."
+  IDS_EXTRACT_MESSAGE_DATA_ERROR           "Erro de dados em '{0}'. O arquivo está danificado."
+  IDS_EXTRACT_MESSAGE_CRC_ERROR            "Falha na verificação CRC de '{0}'. O arquivo está danificado."
+  IDS_EXTRACT_MESSAGE_DATA_ERROR_ENCRYPTED "Erro de dados no arquivo criptografado '{0}'. A senha está correta?"
+  IDS_EXTRACT_MESSAGE_CRC_ERROR_ENCRYPTED  "Falha na verificação CRC do arquivo criptografado '{0}'. A senha está correta?"
+
+  IDS_EXTRACT_MSG_WRONG_PSW_GUESS      "A senha está incorreta?"
+  // IDS_EXTRACT_MSG_ENCRYPTED            "Encrypted file"
+
+  IDS_EXTRACT_MSG_UNSUPPORTED_METHOD   "Método de compactação não suportado"
+  IDS_EXTRACT_MSG_DATA_ERROR           "Erro de dados"
+  IDS_EXTRACT_MSG_CRC_ERROR            "Falha na verificação CRC"
+  IDS_EXTRACT_MSG_UNAVAILABLE_DATA     "Dados indisponíveis"
+  IDS_EXTRACT_MSG_UEXPECTED_END        "Fim inesperado dos dados"
+  IDS_EXTRACT_MSG_DATA_AFTER_END       "Há dados após o fim do conteúdo"  
+  IDS_EXTRACT_MSG_IS_NOT_ARC           "Não é um arquivo compactado"  
+  IDS_EXTRACT_MSG_HEADERS_ERROR        "Erro nos cabeçalhos"
+  IDS_EXTRACT_MSG_WRONG_PSW_CLAIM      "Senha incorreta"
+
+  IDS_OPEN_MSG_UNAVAILABLE_START  "Início do arquivo compactado indisponível"
+  IDS_OPEN_MSG_UNCONFIRMED_START  "Início do arquivo compactado não confirmado"
+  // IDS_OPEN_MSG_ERROR_FLAGS + 5  "Unexpected end of archive"
+  // IDS_OPEN_MSG_ERROR_FLAGS + 6  "There are data after the end of archive"
+  IDS_OPEN_MSG_UNSUPPORTED_FEATURE  "Recurso não suportado"
+END

@@ -1,0 +1,30 @@
+#include "resourceGui.h"
+
+STRINGTABLE
+BEGIN
+  IDS_MESSAGE_NO_ERRORS     "Não há erros"
+
+  IDS_PROGRESS_TESTING      "Testando"
+
+  IDS_MOVING    "Movendo..."
+
+  IDS_CHECKSUM_CALCULATING    "Calculando soma de verificação..."
+  IDS_CHECKSUM_INFORMATION    "Informações da soma de verificação"
+  IDS_CHECKSUM_CRC_DATA       "Soma de verificação CRC dos dados:"
+  IDS_CHECKSUM_CRC_DATA_NAMES "Soma de verificação CRC dos dados e nomes:"
+  IDS_CHECKSUM_CRC_STREAMS_NAMES "Soma de verificação CRC dos fluxos e nomes:"
+
+  IDS_INCORRECT_VOLUME_SIZE "Tamanho de volume inválido"
+
+  IDS_OPENNING  "Abrindo..."
+  IDS_SCANNING  "Verificando..."
+  IDS_MEM_REQUIRES_BIG_MEM     "A operação requer uma grande quantidade de memória (RAM)."
+  IDS_MEM_REQUIRED_MEM_SIZE    "memória necessária"
+  IDS_MEM_CURRENT_MEM_LIMIT    "limite de memória permitido"
+  IDS_MEM_USAGE_LIMIT_SET_BY_7ZIP "limite de memória definido pelo Amurel ZIP"
+  IDS_MEM_RAM_SIZE  "Tamanho da RAM"
+
+  IDS_MSG_ARC_UNPACKING_WAS_SKIPPED       "A extração do arquivo compactado foi ignorada."
+//  IDS_MSG_ARC_FILES_UNPACKING_WAS_SKIPPED "Files extraction was skipped."
+
+END

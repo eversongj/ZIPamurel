@@ -1,0 +1,4 @@
+# Temporary compiler outputs
+*.obj
+*.pch
+*.res

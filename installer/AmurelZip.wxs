@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product
+      Id="{817E8262-845B-4FFE-98AD-69B6E328104B}"
+      UpgradeCode="{26183A38-9BDF-44F7-91A7-96378C2C3501}"
+      Name="AMUREL ZIP"
+      Language="1046"
+      Version="26.5.0.0"
+      Manufacturer="AMUREL">
+    <Package
+        InstallerVersion="200"
+        Compressed="yes"
+        InstallScope="perMachine"
+        Platform="x64"
+        Description="Gerenciador de arquivos AMUREL ZIP"
+        Comments="Baseado no 7-Zip. Consulte os avisos de licença instalados com o programa." />
+    <MajorUpgrade DowngradeErrorMessage="Já está instalada uma versão mais recente do AMUREL ZIP." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="AMUREL ZIP">
+          <Directory Id="DOCFOLDER" Name="Documentos" />
+        </Directory>
+      </Directory>
+      <Directory Id="CommonProgramsFolder">
+        <Directory Id="AMURELPROGRAMMENU" Name="AMUREL" />
+      </Directory>
+    </Directory>
+
+    <Feature Id="Complete" Title="AMUREL ZIP" Description="Gerenciador de arquivos AMUREL ZIP." Level="1">
+      <Component Id="ApplicationFiles" Directory="INSTALLFOLDER" Guid="{963C0F54-9D8F-42D9-BD35-80C9BCC560F0}" Win64="yes">
+        <File Id="AmurelZipExecutable" Source="$(var.ProjectRoot)\CPP\7zip\Bundles\Fm\x64\7zFM.exe" KeyPath="yes">
+          <Shortcut
+              Id="AmurelZipStartMenuShortcut"
+              Directory="AMURELPROGRAMMENU"
+              Name="AMUREL ZIP"
+              Description="Abrir o gerenciador de arquivos AMUREL ZIP"
+              WorkingDirectory="INSTALLFOLDER"
+              Advertise="yes"
+              IconIndex="0" />
+        </File>
+        <RemoveFolder Id="RemoveAmurelProgramMenu" Directory="AMURELPROGRAMMENU" On="uninstall" />
+      </Component>
+
+      <Component Id="DocumentationFiles" Directory="DOCFOLDER" Guid="{D40B1D7F-99A5-4A69-AE19-21244203EC44}" Win64="yes">
+        <File Id="AmurelGuide" Source="$(var.ProjectRoot)\DOC\Guia-Amurel-ZIP.md" KeyPath="yes" />
+        <File Id="LicenseNotices" Source="$(var.ProjectRoot)\DOC\License.txt" />
+        <File Id="UnRarLicense" Source="$(var.ProjectRoot)\DOC\unRarLicense.txt" />
+      </Component>
+    </Feature>
+
+    <UIRef Id="WixUI_InstallDir" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectRoot)\DOC\AmurelLicense.rtf" />
+  </Product>
+</Wix>

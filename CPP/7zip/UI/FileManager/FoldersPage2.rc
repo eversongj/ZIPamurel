@@ -1,0 +1,11 @@
+CAPTION "Pastas"
+BEGIN
+  // GROUPBOX   "&Pasta de trabalho", IDT_FOLDERS_WORKING_FOLDER, m, m, xc, 98
+  LTEXT      "&Pasta de trabalho", IDT_FOLDERS_WORKING_FOLDER, m, m, xc, 8
+  MY_CONTROL_AUTORADIOBUTTON_GROUP ( "&Pasta temporária do sistema", IDR_FOLDERS_WORK_SYSTEM,     m, 20, xc)
+  MY_CONTROL_AUTORADIOBUTTON (       "&Atual",            IDR_FOLDERS_WORK_CURRENT,    m, 34, xc)
+  MY_CONTROL_AUTORADIOBUTTON (       "Especificar:",          IDR_FOLDERS_WORK_SPECIFIED,  m, 48, xc)
+  EDITTEXT   IDE_FOLDERS_WORK_PATH, m + m, 62, xc - m - m - bxsDots, 14, ES_AUTOHSCROLL
+  PUSHBUTTON "...", IDB_FOLDERS_WORK_PATH, xs - m - bxsDots, 61, bxsDots, bys
+  MY_CONTROL_CHECKBOX ( "Usar somente em unidades removíveis", IDX_FOLDERS_WORK_FOR_REMOVABLE, m, 86, xc)
+END
