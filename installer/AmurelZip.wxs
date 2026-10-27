@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product
-      Id="{C8B2F5A9-E4E0-4A18-B4D4-808D8D552F72}"
+      Id="{5D7AF13C-BC09-4E55-AC8E-17B0FF832D91}"
       UpgradeCode="{26183A38-9BDF-44F7-91A7-96378C2C3501}"
       Name="AMUREL ZIP"
       Language="1046"
-      Version="26.5.1.0"
+      Version="26.5.2.0"
       Manufacturer="AMUREL">
     <Package
         InstallerVersion="200"
@@ -62,10 +62,20 @@
         <RegistryKey Root="HKCR" Key="Directory\shellex\ContextMenuHandlers\AMUREL ZIP">
           <RegistryValue Type="string" Value="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" />
         </RegistryKey>
+        <RegistryKey Root="HKCR" Key="*\shellex\ContextMenuHandlers\AMUREL ZIP">
+          <RegistryValue Type="string" Value="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" />
+        </RegistryKey>
         <RegistryKey Root="HKCR" Key="Folder\shellex\ContextMenuHandlers\AMUREL ZIP">
           <RegistryValue Type="string" Value="{A7B3E5D2-6C48-4F91-9B72-13D0A54E2C86}" />
         </RegistryKey>
         <RegistryKey Root="HKCR" Key="Directory\shell\AMURELZIP">
+          <RegistryValue Type="string" Value="Compactar com AMUREL ZIP" />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKCR" Key="*\shell\AMURELZIP">
           <RegistryValue Type="string" Value="Compactar com AMUREL ZIP" />
           <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
           <RegistryKey Key="command">

@@ -43,7 +43,7 @@ static LPCSTR const k_shellex_Prefixes[] =
 
 static const bool k_shellex_Statuses[2][4] =
 {
-  { false, true, true, false },
+  { true, true, true, false },
   { false, false, true, true }
 };
 

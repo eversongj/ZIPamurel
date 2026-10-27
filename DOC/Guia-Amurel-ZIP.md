@@ -36,9 +36,9 @@ opção **Archive format** antes de iniciar.
 5. Ao terminar, confira os arquivos extraídos antes de utilizá-los ou
    encaminhá-los.
 
-Com o instalador atual, clique com o botão direito sobre uma pasta e escolha
-**Compactar com AMUREL ZIP** para criar um arquivo ZIP ao lado dela. No
-Windows 11, essa opção pode aparecer em **Mostrar mais opções**.
+Com o instalador atual, clique com o botão direito sobre um arquivo ou pasta e
+escolha **Compactar com AMUREL ZIP** para criar um arquivo ZIP ao lado do item.
+No Windows 11, essa opção pode aparecer em **Mostrar mais opções**.
 
 ## Extrair arquivos RAR
 
