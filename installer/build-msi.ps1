@@ -11,7 +11,7 @@ $noticesPath = Join-Path $projectRoot "DOC\License.txt"
 $unRarLicensePath = Join-Path $projectRoot "DOC\unRarLicense.txt"
 $licensePath = Join-Path $projectRoot "DOC\AmurelLicense.rtf"
 $outputDirectory = Join-Path $projectRoot "dist"
-$outputPath = Join-Path $outputDirectory "AMUREL-ZIP-26.05.2-x64.msi"
+$outputPath = Join-Path $outputDirectory "AMUREL-ZIP-26.05.6-x64.msi"
 
 foreach ($requiredFile in @($exePath, $guiPath, $codecsPath, $shellExtensionPath, $guidePath, $noticesPath, $unRarLicensePath, $licensePath)) {
   if (!(Test-Path $requiredFile)) {

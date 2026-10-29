@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product
-      Id="{5D7AF13C-BC09-4E55-AC8E-17B0FF832D91}"
+      Id="*"
       UpgradeCode="{26183A38-9BDF-44F7-91A7-96378C2C3501}"
       Name="AMUREL ZIP"
       Language="1046"
-      Version="26.5.2.0"
+      Version="26.5.6.0"
       Manufacturer="AMUREL">
     <Package
         InstallerVersion="200"
@@ -18,8 +18,11 @@
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <Icon Id="AmurelZipIcon.exe" SourceFile="$(var.ProjectRoot)\CPP\7zip\Bundles\Fm\x64\7zFM.exe" />
+    <Property Id="ARPPRODUCTICON" Value="AmurelZipIcon.exe" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="DesktopFolder" Name="Desktop" />
       <Directory Id="ProgramFiles64Folder">
         <Directory Id="INSTALLFOLDER" Name="AMUREL ZIP">
           <Directory Id="DOCFOLDER" Name="Documentos" />
@@ -34,12 +37,22 @@
       <Component Id="ApplicationFiles" Directory="INSTALLFOLDER" Guid="{963C0F54-9D8F-42D9-BD35-80C9BCC560F0}" Win64="yes">
         <File Id="AmurelZipExecutable" Source="$(var.ProjectRoot)\CPP\7zip\Bundles\Fm\x64\7zFM.exe" KeyPath="yes">
           <Shortcut
+              Id="AmurelZipDesktopShortcut"
+              Directory="DesktopFolder"
+              Name="AMUREL ZIP"
+              Description="Abrir o gerenciador de arquivos AMUREL ZIP"
+              WorkingDirectory="INSTALLFOLDER"
+              Advertise="yes"
+              Icon="AmurelZipIcon.exe"
+              IconIndex="0" />
+          <Shortcut
               Id="AmurelZipStartMenuShortcut"
               Directory="AMURELPROGRAMMENU"
               Name="AMUREL ZIP"
               Description="Abrir o gerenciador de arquivos AMUREL ZIP"
               WorkingDirectory="INSTALLFOLDER"
               Advertise="yes"
+              Icon="AmurelZipIcon.exe"
               IconIndex="0" />
         </File>
         <File Id="AmurelZipGui" Source="$(var.ProjectRoot)\CPP\7zip\UI\GUI\x64\7zG.exe" />
@@ -72,14 +85,137 @@
           <RegistryValue Type="string" Value="Compactar com AMUREL ZIP" />
           <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
           <RegistryKey Key="command">
-            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -ad -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
           </RegistryKey>
         </RegistryKey>
         <RegistryKey Root="HKCR" Key="*\shell\AMURELZIP">
           <RegistryValue Type="string" Value="Compactar com AMUREL ZIP" />
           <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
           <RegistryKey Key="command">
-            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; a -ad -tzip &quot;%1.zip&quot; &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+      </Component>
+
+      <Component Id="ExtractionContextMenu" Directory="INSTALLFOLDER" Guid="{17A620B1-17D2-48A0-8D60-D9733C87CA26}" Win64="yes">
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.zip\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." KeyPath="yes" />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.7z\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.rar\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.tar\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.gz\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.bz2\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.xz\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.zst\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.cab\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.iso\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.wim\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.lzma\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.tgz\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.tbz2\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
+          </RegistryKey>
+        </RegistryKey>
+        <RegistryKey Root="HKLM" Key="Software\Classes\SystemFileAssociations\.txz\shell\AMURELZIP.Extract">
+          <RegistryValue Type="string" Value="Descompactar com AMUREL ZIP..." />
+          <RegistryValue Name="Icon" Type="string" Value="&quot;[INSTALLFOLDER]7zFM.exe&quot;" />
+          <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+          <RegistryKey Key="command">
+            <RegistryValue Type="string" Value="&quot;[INSTALLFOLDER]7zG.exe&quot; x -ad -o&quot;%1-extraido&quot; -- &quot;%1&quot;" />
           </RegistryKey>
         </RegistryKey>
       </Component>
