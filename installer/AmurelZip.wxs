@@ -5,7 +5,7 @@
       UpgradeCode="{26183A38-9BDF-44F7-91A7-96378C2C3501}"
       Name="AMUREL ZIP"
       Language="1046"
-      Version="26.5.6.0"
+      Version="26.5.7.0"
       Manufacturer="AMUREL">
     <Package
         InstallerVersion="200"
@@ -224,6 +224,8 @@
         <File Id="AmurelGuide" Source="$(var.ProjectRoot)\DOC\Guia-Amurel-ZIP.md" KeyPath="yes" />
         <File Id="LicenseNotices" Source="$(var.ProjectRoot)\DOC\License.txt" />
         <File Id="UnRarLicense" Source="$(var.ProjectRoot)\DOC\unRarLicense.txt" />
+        <File Id="LicensesAndNotices" Source="$(var.ProjectRoot)\DOC\Licencas-e-Avisos.txt" />
+        <File Id="AmurelLicenseDocument" Source="$(var.ProjectRoot)\DOC\AmurelLicense.rtf" />
       </Component>
     </Feature>
 

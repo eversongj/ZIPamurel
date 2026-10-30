@@ -28,7 +28,7 @@ dos codecs externos. O script requer `7zFM.exe`, `7zG.exe`, `7z.dll` e
 `7-zip.dll` nos respectivos diretórios `x64`. Em seguida, gere o instalador com
 `installer\build-msi.ps1`. É necessário ter o WiX Toolset 3.14 disponível no
 `PATH` ou instalado no caminho padrão. O MSI resultante fica em
-`dist\AMUREL-ZIP-26.05.6-x64.msi`. Ele instala a integração de menu de
+`dist\AMUREL-ZIP-26.05.7-x64.msi`. Ele instala a integração de menu de
 contexto, incluindo **Compactar com AMUREL ZIP** ao clicar com o botão direito
 em arquivos e pastas. O instalador não altera associações de formatos de
 arquivo.

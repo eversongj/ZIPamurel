@@ -1,0 +1,37 @@
+AMUREL ZIP — Licenças, avisos e código-fonte
+============================================
+
+O AMUREL ZIP é desenvolvido pela AMUREL e utiliza código do 7-Zip.
+
+Código-fonte
+------------
+
+Código-fonte do AMUREL ZIP, incluindo as modificações realizadas pela AMUREL:
+https://github.com/eversongj/ZIPamurel
+
+Projeto e código-fonte original do 7-Zip:
+https://www.7-zip.org/
+
+Créditos e licenças
+-------------------
+
+7-Zip Copyright (C) 1999-2026 Igor Pavlov.
+
+A maior parte do código do 7-Zip é distribuída sob a GNU Lesser General
+Public License (GNU LGPL), versão 2.1 ou posterior. Alguns componentes usam
+licenças BSD de 2 ou 3 cláusulas. O suporte a arquivos RAR inclui código
+sujeito também à restrição da licença unRAR.
+
+Os textos completos, avisos de copyright, condições e limitações aplicáveis
+estão nos arquivos instalados nesta mesma pasta:
+
+  - License.txt — licenças do código do 7-Zip, GNU LGPL e licenças BSD;
+  - unRarLicense.txt — licença e restrições do código unRAR;
+  - AmurelLicense.rtf — termos apresentados pelo instalador.
+
+O código proveniente do 7-Zip e as modificações feitas nele permanecem
+sujeitos às respectivas licenças. O nome AMUREL ZIP e os elementos de
+identidade visual da AMUREL identificam esta distribuição personalizada.
+
+Este programa é distribuído sem garantias, conforme detalhado nos textos das
+licenças aplicáveis.

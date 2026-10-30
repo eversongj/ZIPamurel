@@ -21,7 +21,7 @@ static const UInt32 kLangIDs[] =
 };
 #endif
 
-#define kHomePageURL TEXT("https://www.7-zip.org/")
+#define kLicenseFileName TEXT("Documentos\\Licencas-e-Avisos.txt")
 #define kHelpTopic "start.htm"
 
 #define LLL_(quote) L##quote
@@ -45,8 +45,8 @@ bool CAboutDialog::OnInit()
   LangSetWindowText(*this, IDD_ABOUT);
   LangSetDlgItems(*this, kLangIDs, Z7_ARRAY_SIZE(kLangIDs));
   #endif
-  SetItemText(IDT_ABOUT_VERSION, UString("7-Zip " MY_VERSION_CPU));
-  SetItemText(IDT_ABOUT_DATE, LLL(MY_DATE));
+  SetItemText(IDT_ABOUT_VERSION, UString("AMUREL ZIP " MY_VERSION_CPU));
+  SetItemText(IDT_ABOUT_DATE, L"Desenvolvido pela AMUREL");
   
   NormalizePosition();
   return CModalDialog::OnInit();
@@ -59,22 +59,29 @@ void CAboutDialog::OnHelp()
 
 bool CAboutDialog::OnButtonClicked(unsigned buttonID, HWND buttonHWND)
 {
-  LPCTSTR url;
-  switch (buttonID)
-  {
-    case IDB_ABOUT_HOMEPAGE: url = kHomePageURL; break;
-    default:
-      return CModalDialog::OnButtonClicked(buttonID, buttonHWND);
-  }
+  if (buttonID != IDB_ABOUT_LICENSES)
+    return CModalDialog::OnButtonClicked(buttonID, buttonHWND);
+
+  TCHAR path[MAX_PATH];
+  const DWORD size = ::GetModuleFileName(NULL, path, Z7_ARRAY_SIZE(path));
+  if (size == 0 || size >= Z7_ARRAY_SIZE(path))
+    return true;
+  TCHAR *separator = path + size;
+  while (separator != path && separator[-1] != TEXT('\\') && separator[-1] != TEXT('/'))
+    separator--;
+  *separator = 0;
+  if ((separator - path) + ::lstrlen(kLicenseFileName) >= Z7_ARRAY_SIZE(path))
+    return true;
+  ::lstrcpy(separator, kLicenseFileName);
 
   #ifdef UNDER_CE
   SHELLEXECUTEINFO s;
   memset(&s, 0, sizeof(s));
   s.cbSize = sizeof(s);
-  s.lpFile = url;
+  s.lpFile = path;
   ::ShellExecuteEx(&s);
   #else
-  ::ShellExecute(NULL, NULL, url, NULL, NULL, SW_SHOWNORMAL);
+  ::ShellExecute(NULL, TEXT("open"), path, NULL, NULL, SW_SHOWNORMAL);
   #endif
 
   return true;

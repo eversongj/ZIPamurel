@@ -9,11 +9,12 @@ $shellExtensionPath = Join-Path $projectRoot "CPP\7zip\UI\Explorer\x64\7-zip.dll
 $guidePath = Join-Path $projectRoot "DOC\Guia-Amurel-ZIP.md"
 $noticesPath = Join-Path $projectRoot "DOC\License.txt"
 $unRarLicensePath = Join-Path $projectRoot "DOC\unRarLicense.txt"
+$licensesAndNoticesPath = Join-Path $projectRoot "DOC\Licencas-e-Avisos.txt"
 $licensePath = Join-Path $projectRoot "DOC\AmurelLicense.rtf"
 $outputDirectory = Join-Path $projectRoot "dist"
-$outputPath = Join-Path $outputDirectory "AMUREL-ZIP-26.05.6-x64.msi"
+$outputPath = Join-Path $outputDirectory "AMUREL-ZIP-26.05.7-x64.msi"
 
-foreach ($requiredFile in @($exePath, $guiPath, $codecsPath, $shellExtensionPath, $guidePath, $noticesPath, $unRarLicensePath, $licensePath)) {
+foreach ($requiredFile in @($exePath, $guiPath, $codecsPath, $shellExtensionPath, $guidePath, $noticesPath, $unRarLicensePath, $licensesAndNoticesPath, $licensePath)) {
   if (!(Test-Path $requiredFile)) {
     throw "Required MSI source file is missing: $requiredFile"
   }
